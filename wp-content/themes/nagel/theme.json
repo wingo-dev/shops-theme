@@ -1,0 +1,53 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/theme.json",
+    "version": 1, 
+    "settings": {
+        "appearanceTools": true,
+        "color": {
+            "defaultPalette": true,
+            "palette": [
+                {"slug": "u-pink", "color": "#9a7cbd", "name": "nagel primary"}
+            ],
+            "background": true ,
+            "text": true,
+            "link": true
+        },
+        "blocks": {
+            "core/site-title": {
+                "color": {
+                    "defaultPalette": true,
+                    "link": true
+                }
+            }
+        },
+        "typography": {
+            "fontFamilies": [
+                {"fontFamily": "Rubik, sans-serif", 
+                    "slug": "U-Rubik",
+                    "name": "U-nagel"
+                }
+            ]
+        }, 
+        "layout": {
+            "contentSize": "800px",
+            "wideSize": "1600px"
+        },
+        "spacing": {
+            "margin": true,
+            "padding": true
+        }
+    },
+    "styles": {
+        "spacing": {
+            "margin": {
+                "top": "0px",
+                "bottom":"0px"
+            },
+            "padding": {
+                "top":"20px",
+                "bottom":"20px"
+            }
+        }
+    }
+  
+}
