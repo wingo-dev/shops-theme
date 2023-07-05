@@ -5,8 +5,9 @@
     <?php wp_head();?>
 </head>
 <body <?php body_class('nagel');?>>
+    <div class="container">
     <?php wp_body_open(); ?>
-    <h1> hello</h1>
+    <div>
     <?php wp_footer();?>
 </body>
 </html>
