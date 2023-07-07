@@ -56,3 +56,51 @@ p{
     background-size: cover;
     background-repeat: no-repeat;
 }
+/* login */
+.login-form {
+    width: 300px;
+    margin: 0 auto;
+  }
+  
+  .input-group {
+    position: relative;
+    margin-bottom: 15px;
+  }
+  
+  .input-group i {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+  }
+  
+  .input-group input {
+    width: 100%;
+    padding: 10px 10px 10px 30px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  .input-group.checkbox {
+    display: flex;
+    align-items: center;
+  }
+  
+  .input-group.checkbox input {
+    width: auto;
+    margin-right: 10px;
+  }
+  
+  .input-group input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .input-group input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  
+  .forgot-password {
+    text-align: right;
+  }
+  
