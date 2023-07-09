@@ -318,3 +318,21 @@ p{
   .login-link a{
     color: #646262;
   }
+  @media(max-width:860px){
+    .container{
+      padding: 25px;
+    }
+    .image-container{
+      display: none;
+    }
+    form, .form-container{
+      padding: 0;
+    }
+    .register-sec{
+      padding: 0;
+    }
+    .wp-container-5.wp-container-5, .wp-container-9.wp-container-9, .wp-container-12.wp-container-12 {
+      flex-wrap: nowrap;
+      padding: 9px;
+    }
+  }
