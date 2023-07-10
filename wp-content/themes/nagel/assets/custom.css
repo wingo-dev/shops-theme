@@ -318,6 +318,46 @@ p{
   .login-link a{
     color: #646262;
   }
+/* search form */
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  padding: 20px;
+}
+
+.search-form label {
+  font-size: 20px;
+  color: #fff;
+  margin-right: 10px;
+}
+
+.search-form input {
+  width: 400px;
+  height: 25px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-right: 10px;
+}
+
+.search-form .btn {
+  height: 35px;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #fff;
+  color: #000;
+  margin: 10px;
+  width: auto;
+}
+
+.search-form .btn:hover {
+  background-color: #45a049;
+}
+
+  /* mobile css */
   @media(max-width:860px){
     .container{
       padding: 25px;
