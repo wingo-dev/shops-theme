@@ -1,4 +1,5 @@
 wp-admin/
 wp-includes/
-wp-content/plugins/
+wp-content/plugins/akismet
+wp-content/plugins/all-in-one*
 wp-config.php
