@@ -356,9 +356,75 @@ p{
 .search-form .btn:hover {
   background-color: #45a049;
 }
+/* dashboard */
+.dashboard-container {
+  display: flex;
+}
+
+.first-column {
+  width: 30%;
+  padding: 20px;
+}
+
+.second-column {
+  width: 70%;
+  padding: 20px;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+img {
+  width: 100%;
+  max-width: 200px;
+}
+
+input[type="file"],
+textarea {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.edit-profile-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.tabs {
+  display: flex;
+}
+
+.tab {
+  cursor: pointer;
+  padding: 10px;
+  margin-right: 10px;
+  caret-color: transparent;
+}
+
+.tab.active {
+  color: #000;
+  text-decoration: underline;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+button {
+  color: #fff;
+  background-color: #9a7cbd;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
 
   /* mobile css */
-  @media(max-width:860px){
+@media(max-width:860px){
     .container{
       padding: 25px;
     }
@@ -375,4 +441,4 @@ p{
       flex-wrap: nowrap;
       padding: 9px;
     }
-  }
+}

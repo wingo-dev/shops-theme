@@ -18,8 +18,16 @@ function u_enqueue(){
         array(),
         null
     );
+    wp_register_script(
+        'u_js',
+        get_theme_file_uri('assets/custom.js'), 
+        array('jquery'), 
+        null, 
+        true 
+    );
     wp_enqueue_style('poppins-font');
     wp_enqueue_style('raleway-semi-font');
     wp_enqueue_style('u_css');
     wp_enqueue_style('fontawesome');
+    wp_enqueue_script('u_js');
 }

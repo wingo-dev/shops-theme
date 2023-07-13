@@ -8,7 +8,6 @@ Author: Mohamed
 Author URI: http://nagel.com/
 */
 
-// Shortcode for login form
 // Shortcode for custom login form
 function custom_login_form() {
     if (!is_user_logged_in()) {
@@ -44,6 +43,7 @@ function custom_login_form() {
     return '<p>You are already logged in.</p>';
 }
 add_shortcode('custom-login', 'custom_login_form');
+
 function custom_handle_login() {
     if (isset($_POST['login'])) {
         $creds = array();
@@ -148,3 +148,48 @@ function custom_handle_registration() {
 }
 add_action('init', 'custom_handle_registration');
 
+function custom_dashboard(){
+    $form = '
+    <div class="dashboard-container">
+  <div class="first-column">
+    <h2>Name</h2>
+    <img src="path/to/image.jpg" alt="User Image">
+    <input type="file" id="upload-photo" accept="image/*">
+    <textarea id="upload-description" placeholder="Upload Description"></textarea>
+    <p>Member since: [insert date]</p>
+  </div>
+  <div class="second-column">
+    <div class="tabs">
+      <div class="tab active" data-tab="user-info">
+        <h3>User Info</h3>
+      </div>
+      <div class="tab" data-tab="billing-info">
+        <h3>Billing Information</h3>
+      </div>
+    </div>
+    <div id="user-info" class="tab-content active">
+        <form class="edit-profile-form">
+            <input type="text" id="full-name" placeholder="Full Name">
+            <input type="text" id="user-name" placeholder="User Name">
+            <input type="text" id="company-name" placeholder="Company Name">
+            <input type="text" id="address" placeholder="Address">
+            <input type="email" id="email" placeholder="Email Address">
+            <input type="tel" id="phone" placeholder="Phone Number">
+            <p>Social Profiles:</p>
+            <label for="facebook-username">Facebook Username:</label>
+            <input type="text" id="facebook-username">
+            <label for="twitter-username">Twitter Username:</label>
+            <input type="text" id="twitter-username">
+            <button type="submit" style="background-color: #9a7cbd;">Update Info</button>
+        </form>
+      </div>
+      <div id="billing-info" class="tab-content">
+        
+      </div>
+  </div>
+</div>
+';
+    return $form;
+}
+
+add_shortcode('custom-dashboard', 'custom_dashboard');
