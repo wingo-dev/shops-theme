@@ -12,15 +12,6 @@ Author URI: http://nagel.com/
 // Shortcode for custom login form
 function custom_login_form() {
     if (!is_user_logged_in()) {
-        // $form = '<form method="post">
-        //     <label for="username">Username</label>
-        //     <input type="text" id="username" name="log" required>
-
-        //     <label for="password">Password</label>
-        //     <input type="password" id="password" name="pwd" required>
-
-        //     <input type="submit" name="submit" value="Login">
-        // </form>';
         $form = '
         <form method="post" class="login-form">
             <div class="input-group">
@@ -43,7 +34,7 @@ function custom_login_form() {
             </div>
             </div>
             <div class="input-group login-btn">
-                <input type="submit" value="Log In">
+                <input type="submit" name="login" value="Log In">
             </div>
             </form>
         ';
@@ -54,17 +45,17 @@ function custom_login_form() {
 }
 add_shortcode('custom-login', 'custom_login_form');
 function custom_handle_login() {
-    if (isset($_POST['submit'])) {
+    if (isset($_POST['login'])) {
         $creds = array();
-        $creds['user_login'] = sanitize_user($_POST['log']);
-        $creds['user_password'] = $_POST['pwd'];
+        $creds['user_login'] = sanitize_user($_POST['email']);  // Change 'email' to 'user_login'
+        $creds['user_password'] = $_POST['password'];
         $creds['remember'] = true;
 
         $user = wp_signon($creds, false);
 
         if (!is_wp_error($user)) {
             // The user has been logged in
-            $redirect_url = home_url('/custom-dashboard/');
+            $redirect_url = home_url();
             wp_redirect($redirect_url);
             exit;
         } else {
@@ -84,27 +75,27 @@ function custom_registration_form() {
         <div class="image-container">
         </div>
         <div class="form-container">
-        <form action="' . wp_registration_url() . '" method="POST">
+        <form action="" method="POST">
           <div>
             <h2>New user?</h2>
             <p>Use the form below to create your account.</p>
           </div>
             <div class="inline-input">
-              <input type="text" id="first-name" name="first-name" placeholder="First Name">
-              <input type="text" id="last-name" name="last-name" placeholder="Last Name">
+              <input type="text" id="first-name" name="firstName" placeholder="First Name" required>
+              <input type="text" id="last-name" name="lastName" placeholder="Last Name" required>
             </div>
       
-            <input type="email" id="email" name="email" placeholder="Email">
+            <input type="email" id="email" name="email" placeholder="Email" required>
       
             <div class="inline-input">
-              <input type="password" id="password" name="password" placeholder="Password">
-              <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password">
+              <input type="password" id="password" name="password" placeholder="Password" required>
+              <input type="password" id="confirm-password" name="confirmPassword" placeholder="Confirm Password" required>
             </div>
       <div>
-            <input type="checkbox" id="agree" name="agree">
+            <input type="checkbox" id="agree" name="agree" required>
             <label for="agree">Agreed to Terms and Conditions</label>
       </div>
-            <button type="submit">Sign Up</button>
+            <button type="submit" name="register">Sign Up</button>
       <div class="login-link">Have an account? <a href="/login">Login</a></div>
           </form>
         </div>
@@ -117,22 +108,43 @@ function custom_registration_form() {
 add_shortcode('custom-register', 'custom_registration_form');
 
 function custom_handle_registration() {
-    if (isset($_POST['submit'])) {
-        $username = sanitize_user($_POST['user_login']);
-        $email = sanitize_email($_POST['user_email']);
+    // print_r($_POST);
+    if (isset($_POST['register'])) {
+        $username = sanitize_user($_POST['firstName']);
+        $email = sanitize_email($_POST['email']);
+        $password = $_POST['password'];
+        $confirm_password = $_POST['confirmPassword'];
+        $last_name = sanitize_text_field($_POST['lastName']);
 
-        $errors = register_new_user($username, $email);
+        if($password != $confirm_password) {
+            // Passwords don't match
+            echo 'The passwords do not match.';
+            exit;
+        }
+        echo "Username: $username<br>";
+        echo "Email: $email<br>";
 
-        if (!is_wp_error($errors)) {
-            // The user has been created
-            $redirect_url = home_url('/custom-dashboard/');
+        $user_id = wp_create_user($username, $password, $email);
+
+        if (!is_wp_error($user_id)) {
+            // The user has been created successfully
+            // We update the last name here. WordPress does not support last name in the wp_create_user function
+            wp_update_user(
+                array(
+                    'ID' => $user_id,
+                    'last_name' => $last_name
+                )
+            );
+
+            $redirect_url = home_url();
             wp_redirect($redirect_url);
             exit;
         } else {
             // Something went wrong
-            echo $errors->get_error_message();
+            echo $user_id->get_error_message();
             exit;
         }
     }
 }
 add_action('init', 'custom_handle_registration');
+
