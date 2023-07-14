@@ -170,7 +170,11 @@ function custom_dashboard(){
             <p>Member since:  29 July 2023</p>
         </div>
         <div class="second-column">
+            <div class="edit-profile">
+                <h2>Edit Profile</h2>
+            </div>
             <div class="tabs">
+                
                 <div class="tab active" data-tab="user-info">
                     <h3>User Info</h3>
                 </div>
@@ -180,17 +184,45 @@ function custom_dashboard(){
                 </div>
                 <div id="user-info" class="tab-content active">
                     <form class="edit-profile-form">
-                        <input type="text" id="full-name" placeholder="Full Name">
-                        <input type="text" id="user-name" placeholder="User Name">
-                        <input type="text" id="company-name" placeholder="Company Name">
-                        <input type="text" id="address" placeholder="Address">
-                        <input type="email" id="email" placeholder="Email Address">
-                        <input type="tel" id="phone" placeholder="Phone Number">
+                        <div class="row">
+                            <div>
+                                <label for="full-name">Full Name:</label>
+                                <input type="text" id="full-name">
+                            </div>
+                            <div>
+                                <label for="user-name">User Name:</label>
+                                <input type="text" id="user-name">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div>
+                                <label for="company-name">Company Name:</label>
+                                <input type="text" id="company-name">
+                            </div>
+                            <div>
+                                <label for="address">Address:</label>
+                                <input type="text" id="address">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div>
+                                <label for="email">Email Address:</label>
+                                <input type="email" id="email">
+                            </div>
+                            <div>
+                                <label for="phone">Phone Number:</label>
+                                <input type="tel" id="phone">
+                            </div>
+                        </div>
                         <p>Social Profiles:</p>
-                        <label for="facebook-username">Facebook Username:</label>
-                        <input type="text" id="facebook-username">
-                        <label for="twitter-username">Twitter Username:</label>
-                        <input type="text" id="twitter-username">
+                        <div class="row">
+                            <div class="facebook">
+                                <input type="text" id="facebook-username">
+                            </div>
+                            <div class="twitter">
+                                <input type="text" id="twitter-username">
+                            </div>
+                        </div>
                         <button type="submit" style="background-color: #9a7cbd;">Update Info</button>
                     </form>
                 </div>
