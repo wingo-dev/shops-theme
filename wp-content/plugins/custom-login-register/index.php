@@ -148,47 +148,58 @@ function custom_handle_registration() {
 }
 add_action('init', 'custom_handle_registration');
 
+
 function custom_dashboard(){
+    $plugin_url = plugin_dir_url(__FILE__);
+    $image_url = $plugin_url . '/assets/default-avatar.png';
     $form = '
     <div class="dashboard-container">
-  <div class="first-column">
-    <h2>Name</h2>
-    <img src="path/to/image.jpg" alt="User Image">
-    <input type="file" id="upload-photo" accept="image/*">
-    <textarea id="upload-description" placeholder="Upload Description"></textarea>
-    <p>Member since: [insert date]</p>
-  </div>
-  <div class="second-column">
-    <div class="tabs">
-      <div class="tab active" data-tab="user-info">
-        <h3>User Info</h3>
-      </div>
-      <div class="tab" data-tab="billing-info">
-        <h3>Billing Information</h3>
-      </div>
-    </div>
-    <div id="user-info" class="tab-content active">
-        <form class="edit-profile-form">
-            <input type="text" id="full-name" placeholder="Full Name">
-            <input type="text" id="user-name" placeholder="User Name">
-            <input type="text" id="company-name" placeholder="Company Name">
-            <input type="text" id="address" placeholder="Address">
-            <input type="email" id="email" placeholder="Email Address">
-            <input type="tel" id="phone" placeholder="Phone Number">
-            <p>Social Profiles:</p>
-            <label for="facebook-username">Facebook Username:</label>
-            <input type="text" id="facebook-username">
-            <label for="twitter-username">Twitter Username:</label>
-            <input type="text" id="twitter-username">
-            <button type="submit" style="background-color: #9a7cbd;">Update Info</button>
-        </form>
-      </div>
-      <div id="billing-info" class="tab-content">
+        <div class="first-column">
+            <h2>Your Name</h2>
+            <p>@yourname</p>
+            <div class="avatar">
+                <img src="'.esc_url($image_url) .'" alt="User Image">
+                <a href="" class="delete-avatar"><img src="'.plugin_dir_url(__FILE__).'/assets/delete-button.png"/></a>
+            </div>
+            <input type="file" id="upload-photo" accept="image/*" style="display: none;">
+            <button id="upload-photo-button">Upload New Photo</button>
+            <div id="upload-description">
+                <p>Upload a new avatar. Larger image will be resized automatically.<br>
+                Maximum upload size is 1 MB</p>
+            </div>
+            <p>Member since:  29 July 2023</p>
+        </div>
+        <div class="second-column">
+            <div class="tabs">
+                <div class="tab active" data-tab="user-info">
+                    <h3>User Info</h3>
+                </div>
+                <div class="tab" data-tab="billing-info">
+                    <h3>Billing Information</h3>
+                </div>
+                </div>
+                <div id="user-info" class="tab-content active">
+                    <form class="edit-profile-form">
+                        <input type="text" id="full-name" placeholder="Full Name">
+                        <input type="text" id="user-name" placeholder="User Name">
+                        <input type="text" id="company-name" placeholder="Company Name">
+                        <input type="text" id="address" placeholder="Address">
+                        <input type="email" id="email" placeholder="Email Address">
+                        <input type="tel" id="phone" placeholder="Phone Number">
+                        <p>Social Profiles:</p>
+                        <label for="facebook-username">Facebook Username:</label>
+                        <input type="text" id="facebook-username">
+                        <label for="twitter-username">Twitter Username:</label>
+                        <input type="text" id="twitter-username">
+                        <button type="submit" style="background-color: #9a7cbd;">Update Info</button>
+                    </form>
+                </div>
         
-      </div>
-  </div>
-</div>
-';
+            <div id="billing-info" class="tab-content">
+                
+            </div>
+        </div>  
+    </div>';
     return $form;
 }
 

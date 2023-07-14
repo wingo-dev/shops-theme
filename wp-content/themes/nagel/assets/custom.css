@@ -359,16 +359,29 @@ p{
 /* dashboard */
 .dashboard-container {
   display: flex;
+  padding: 10% 0;
 }
 
 .first-column {
   width: 30%;
-  padding: 20px;
+  margin: 10px;
+  padding: 40px;
+  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.15);
+  text-align: center;
 }
-
+.first-column h2{
+  font-family: 'Poppins';
+  font-size: 24px;
+}
+.first-column p{
+  font-family: 'Poppins';
+  font-size: 14px;
+}
 .second-column {
   width: 70%;
-  padding: 20px;
+  margin: 10px;
+  padding: 40px;
+  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.15);
 }
 
 h2 {
@@ -422,7 +435,23 @@ button {
   padding: 10px 20px;
   cursor: pointer;
 }
-
+.avatar{
+  position: relative;
+}
+.avatar img{
+  border-radius: 50%;
+  width: 150px;
+  height: auto;
+}
+.delete-avatar{
+  position: absolute;
+  right: 63px;
+  top: 0px;
+}
+.delete-avatar img{
+  width: 32px;
+  height: auto;
+}
   /* mobile css */
 @media(max-width:860px){
     .container{

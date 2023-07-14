@@ -20,4 +20,10 @@ document.addEventListener("DOMContentLoaded", function () {
         .classList.add("active");
     });
   });
+
+  document
+    .getElementById("upload-photo-button")
+    .addEventListener("click", function () {
+      document.getElementById("upload-photo").click();
+    });
 });
