@@ -503,6 +503,42 @@ button {
   height: 32px;
   margin-top: 10px;
 }
+.facebook{
+  position: relative;
+}
+.facebook::before{
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 11px;
+  left: 0px;
+  background-image: url("./images/facebook.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.twitter{
+  position: relative;
+}
+.twitter::before{
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 11px;
+  left: 0px;
+  background-image: url("./images/twitter.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+#facebook-username{
+  padding-left: 40px;
+}
+#twitter-username{
+  padding-left: 40px;
+}
   /* mobile css */
 @media(max-width:860px){
     .container{

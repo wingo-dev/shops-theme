@@ -40,7 +40,7 @@ function custom_login_form() {
 
         return $form;
     }
-    return '<p>You are already logged in.</p>';
+    wp_redirect(home_url('/dashboard'));
 }
 add_shortcode('custom-login', 'custom_login_form');
 
@@ -55,7 +55,7 @@ function custom_handle_login() {
 
         if (!is_wp_error($user)) {
             // The user has been logged in
-            $redirect_url = home_url();
+            $redirect_url = home_url('/dashboard');
             wp_redirect($redirect_url);
             exit;
         } else {
@@ -103,7 +103,7 @@ function custom_registration_form() {
 
         return $form;
     }
-    return '<p>You are already logged in.</p>';
+    wp_redirect(home_url('/dashboard'));
 }
 add_shortcode('custom-register', 'custom_registration_form');
 
@@ -136,7 +136,7 @@ function custom_handle_registration() {
                 )
             );
 
-            $redirect_url = home_url();
+            $redirect_url = home_url('/dashboard');
             wp_redirect($redirect_url);
             exit;
         } else {
@@ -150,6 +150,7 @@ add_action('init', 'custom_handle_registration');
 
 
 function custom_dashboard(){
+    if (is_user_logged_in()) {
     $plugin_url = plugin_dir_url(__FILE__);
     $image_url = $plugin_url . '/assets/default-avatar.png';
     $form = '
@@ -233,6 +234,7 @@ function custom_dashboard(){
         </div>  
     </div>';
     return $form;
+    }
 }
 
 add_shortcode('custom-dashboard', 'custom_dashboard');
