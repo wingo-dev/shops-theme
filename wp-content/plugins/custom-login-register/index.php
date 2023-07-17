@@ -12,31 +12,41 @@ Author URI: http://nagel.com/
 function custom_login_form() {
     if (!is_user_logged_in()) {
         $form = '
-        <form method="post" class="login-form">
-            <div class="input-group">
-            <h2>Login please</h2>
+        <div class="login-group">
+            <div class="login-welcome" style="flex-basis:45%">
+                <h2 class="wp-block-heading has-text-align-center">WELCOME</h2>
+                <p class="has-text-align-center">Enter your details and start the journey with us</p>
+                <div style="margin-top: 30px;">
+                    <a href="'.home_url('/register').'" rel="/register/" class="btn">signup</a>
+                </div>
             </div>
-            <div class="input-group emailbox">
-                <input type="email" id="email"  name="email" placeholder="Input your user ID or Email">
+            <div>
+                <form method="post" class="login-form">
+                <div class="input-group">
+                <h2>Login please</h2>
+                </div>
+                <div class="input-group emailbox">
+                    <input type="email" id="email"  name="email" placeholder="Input your user ID or Email">
+                </div>
+                
+                <div class="input-group passwordbox">
+                    <input type="password" id="password" name="password" placeholder="Input your password">
+                </div>
+                <div class="rfgroup">
+                <div class="checkbox">
+                    <input type="checkbox" id="remember" name="remember">
+                    <label for="remember">Remember me</label>
+                </div>
+                <div class="forgot-password">
+                    <a href="#">Forgot password?</a>
+                </div>
+                </div>
+                <div class="input-group login-btn">
+                    <input type="submit" name="login" value="Log In">
+                </div>
+                </form>
             </div>
-            
-            <div class="input-group passwordbox">
-                <input type="password" id="password" name="password" placeholder="Input your password">
-            </div>
-            <div class="rfgroup">
-            <div class="checkbox">
-                <input type="checkbox" id="remember" name="remember">
-                <label for="remember">Remember me</label>
-            </div>
-            <div class="forgot-password">
-                <a href="#">Forgot password?</a>
-            </div>
-            </div>
-            <div class="input-group login-btn">
-                <input type="submit" name="login" value="Log In">
-            </div>
-            </form>
-        ';
+        </div>';
 
         return $form;
     }
